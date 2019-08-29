@@ -15,6 +15,12 @@ class App extends React.Component {
         { name: "Jamming", artist: "Joe Blow", album: "Copycat", id: 1 },
         { name: "Fuggedaboutit", artist: "Waka", album: "Bluecar", id: 2 },
         { name: "Hip To Be", artist: "Bull Rider", album: "Marker", id: 3 }
+      ],
+      playlistName: "Cowabunga!",
+      playlistTracks: [
+        { name: "Blue", artist: "Square", album: "Smooth", id: 4 },
+        { name: "Red", artist: "Triangle", album: "Rough", id: 5 },
+        { name: "Yellow", artist: "Circle", album: "Spotted", id: 6 }
       ]
     };
   }
@@ -29,7 +35,10 @@ class App extends React.Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} />
-            <Playlist />
+            <Playlist
+              playlistName={this.state.playlistName}
+              playlistTracks={this.state.playlistTracks}
+            />
           </div>
         </div>
       </div>
