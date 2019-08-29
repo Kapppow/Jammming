@@ -23,6 +23,23 @@ class App extends React.Component {
         { name: "Yellow", artist: "Circle", album: "Spotted", id: 6 }
       ]
     };
+
+    this.addTrack = this.addTrack.bind(this);
+  }
+
+  //prettier-ignore
+  addTrack(track) {
+    /* First, create a new variable that copies the playlistTracks from
+    the state, so that you are not directly changing state */
+    let tracks = this.state.playlistTracks;
+
+    // Next, check to see if there is a match
+    if (tracks.find(savedTrack => savedTrack.id === track.id)) {
+      return;
+    } else {
+      tracks.push(track);
+    }
+    this.setState({playlistName: tracks})
   }
 
   render() {
@@ -34,7 +51,10 @@ class App extends React.Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults} />
+            <SearchResults
+              searchResults={this.state.searchResults}
+              onAdd={this.addTrack}
+            />
             <Playlist
               playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
